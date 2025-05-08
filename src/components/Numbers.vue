@@ -15,13 +15,11 @@ const hoveredNumber = ref(0)
 watch(hoveredNumber, () => {
 	if (hoveredNumber.value !== 0) {
 		for (let i = 0; i < nums.value.length; i++) {
-			for (let i = 0; i < nums.value.length; i++) {
-				const num = Number(nums.value[i].textContent?.trim());
-				if (hoveredNumber.value % num === 0) {
-					nums.value[i].classList.add('active')
-				} else {
-					nums.value[i].classList.remove('active')
-				}
+			const num = Number(nums.value[i].textContent?.trim());
+			if (hoveredNumber.value % num === 0) {
+				nums.value[i].classList.add('active')
+			} else {
+				nums.value[i].classList.remove('active')
 			}
 		}
 	}
