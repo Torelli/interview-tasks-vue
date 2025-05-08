@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 
-const limit = ref(100);
-const randomNumbersFromLimit = computed(() => {
+const limit = ref(100); // Added ref to updated the state of the random numbers displayed when user changes input
+const randomNumbersFromLimit = computed(() => { // Created a computed so the numbers will only change if the limit changes
 	const numbers = [];
 	for (let i = 1; i <= limit.value; i++) {
 		numbers.push(i);
 	}
 	return numbers.sort(() => Math.random() - 0.5)
 })
-const nums = ref([] as HTMLElement[])
-const hoveredNumber = ref(0)
+const nums = ref([] as HTMLElement[]) // Created a reference for a list of each number element generated in the component for loop
+const hoveredNumber = ref(0) // Created a hoveredNumber state to update number elements when a number is hovered
 
-watch(hoveredNumber, () => {
+watch(hoveredNumber, () => { // Added a watch function to the hovered number to iterate over the other number elements and change its classes to active if they are divisors of the hovered number
 	if (hoveredNumber.value !== 0) {
 		for (let i = 0; i < nums.value.length; i++) {
 			const num = Number(nums.value[i].textContent?.trim());
@@ -28,7 +28,7 @@ watch(hoveredNumber, () => {
 	}
 })
 
-function reset() {
+function reset() { // Resets the hovered number to 0 so all the elements gets the active class removed on the watch function
 	hoveredNumber.value = 0;
 }
 </script>
