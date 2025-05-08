@@ -4,7 +4,7 @@ import { computed, ref, watch } from 'vue';
 const limit = ref(100);
 const randomNumbersFromLimit = computed(() => {
 	const numbers = [];
-	for (let i = 0; i < limit.value; i++) {
+	for (let i = 1; i <= limit.value; i++) {
 		numbers.push(i);
 	}
 	return numbers.sort(() => Math.random() - 0.5)
